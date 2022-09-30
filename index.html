@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./collectionPageStyle.css">
     <title>MTG Collection Page</title>
-    <script src="" defer ></script>
+    <script src="./collectionPageScript.js" defer ></script>
     <script src="" defer ></script>
 </head>
 <body>
@@ -19,35 +19,80 @@
 
     <div id="controlBox">
         <div class="controlContent" id="formBox">
-            <form name="inputForm">
-                <label for="cardName">Card Name:</label> 
-                <input type = "text" name ="cardName" id="cardName">
-                <br>
-                <label for="cardType">Card Type:</label> 
-                <input type = "text" name ="cardType" id="cardType">
-                <br>
-                <label for="cardCost">Mana Cost:</label> 
-                <input type = "text" name ="cardCost" id="cardCost">
-                <br>
-                <label for="cardPic">Picture???:</label> 
-                <input type = "text" name ="cardPic" id="cardPic">
-                <br>
-                <p id="errorText"></p>
-        
-              </form>
+
+            <div id="inputDiv">
+                <form name="inputForm" id="inputForm">
+                    <label for="cardName">Card Name:</label> 
+                    <input type = "text" name ="cardName" id="cardNameInput">
+                    <br>
+                    <label for="cardType">Card Type:</label> 
+                    <input type = "text" name ="cardType" id="cardTypeInput">
+                    <br>
+                    <label for="cardCost">Mana Cost:</label> 
+                    <input type = "text" name ="cardCost" id="cardCostInput">
+                    <br>
+                    <label for="cardPic">Picture???:</label> 
+                    <input type = "text" name ="cardPic" id="cardPicInput">
+                    <br>
+                    <input type ="button" value="Add Card" id="addCardButton">
+                    <input type ="button" value="Clear Form" class="clearFormButton">
+                    <br>
+                </form>
+            </div>
+
+            <div id="editDiv">
+                <form name="editForm" id="editForm">
+                    <label for="cardName">Card Name:</label> 
+                    <input type = "text" name ="cardName" id="cardNameEdit">
+                    <br>
+                    <label for="cardType">Card Type:</label> 
+                    <input type = "text" name ="cardType" id="cardTypeEdit">
+                    <br>
+                    <label for="cardCost">Mana Cost:</label> 
+                    <input type = "text" name ="cardCost" id="cardCostEdit">
+                    <br>
+                    <label for="cardPic">Picture???:</label> 
+                    <input type = "text" name ="cardPic" id="cardPicEdit">
+                    <br>
+                    <input type ="button" value="Edit Card" id="editCardButton">
+                    <input type ="button" value="Clear Form" class="clearFormButton">
+                    <br>
+                </form>
+            </div>
+            
+            <div id="searchDiv">
+                <form name="searchForm" id="searchForm">
+                    <label for="cardName">Card Name:</label> 
+                    <input type = "text" name ="cardName" id="cardNameSearch">
+                    <br>
+                    <label for="cardType">Card Type:</label> 
+                    <input type = "text" name ="cardType" id="cardTypeSearch">
+                    <br>
+                    <label for="cardCost">Mana Cost:</label> 
+                    <input type = "text" name ="cardCost" id="cardCostSearch">
+                    <br>
+                    <input type ="button" value="Search" id="SearchButton">
+                    <input type ="button" value="Clear Form" class="clearFormButton">
+                    <br>
+                </form>
+            </div>
+
+            <p id="errorText"></p>
+
         </div>
+
         <div id="sideBox">
             <div class="controlContent" id="modeBox">
-                <button>
-                    Add Item
+                <button id="addModeButton">
+                    Add Mode
                 </button>
-                <button>
-                    Edit Item
+                <button id="editModeButton">
+                    Edit Mode
                 </button>
-                <button>
-                    Search
+                <button id="searchModeButton">
+                    Search Mode
                 </button>
-                <button>
+                <button id="removeModeButton">
                     Remove Item
                 </button>
             </div>
@@ -60,6 +105,11 @@
 
     <main>
         main
+        <div>
+            <ul id="card-list">
+                
+            </ul>
+        </div>
         <div class="testBox">
             This is a test box for a possible list-item design.
         </div>
