@@ -46,6 +46,16 @@ h1 {
 
 #modeBox {
     width: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items:center;
+}
+
+button {
+    width: 60px;
+    height: 30px;
 }
 
 #sortBox {
