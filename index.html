@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./collectionPageStyle.css">
     <title>MTG Collection Page</title>
+    <script src="" defer ></script>
+    <script src="" defer ></script>
 </head>
 <body>
 
@@ -17,11 +19,25 @@
 
     <div id="controlBox">
         <div class="controlContent" id="formBox">
-            form box
+            <form name="inputForm">
+                <label for="cardName">Card Name:</label> 
+                <input type = "text" name ="cardName" id="cardName">
+                <br>
+                <label for="cardType">Card Type:</label> 
+                <input type = "text" name ="cardType" id="cardType">
+                <br>
+                <label for="cardCost">Mana Cost:</label> 
+                <input type = "text" name ="cardCost" id="cardCost">
+                <br>
+                <label for="cardPic">Picture???:</label> 
+                <input type = "text" name ="cardPic" id="cardPic">
+                <br>
+                <p id="errorText"></p>
+        
+              </form>
         </div>
         <div id="sideBox">
             <div class="controlContent" id="modeBox">
-                mode box
                 <button>
                     Add Item
                 </button>
@@ -44,6 +60,18 @@
 
     <main>
         main
+        <div class="testBox">
+            This is a test box for a possible list-item design.
+        </div>
+        <div class="testBox">
+
+        </div>
+        <div class="testBox">
+
+        </div>
+        <div class="testBox">
+
+        </div>
     </main>
     
 </body>

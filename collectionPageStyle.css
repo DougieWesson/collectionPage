@@ -54,7 +54,7 @@ h1 {
 }
 
 button {
-    width: 60px;
+    width: 70px;
     height: 30px;
 }
 
@@ -68,4 +68,18 @@ main {
     border-width: 2px;
     border-color: red;
     min-height: 500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items: flex-start;
+}
+
+.testBox {
+    height: 200px;
+    width: 160px;
+    margin: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: red;
 }
