@@ -1,12 +1,13 @@
 
 let cardList = JSON.parse(localStorage.getItem('cardList')) || [];
 
-document.getElementsByClassName('body').onload = () =>{
-    let inputs = document.querySelectorAll('input')
-    inputs.forEach(input => {
-    input.value = '';
-    });
+document.getElementById('body').onload = () =>{
+    // let inputs = document.querySelectorAll('input')
+    // inputs.forEach(input => {
+    // input.value = '';
+    // });
     listMyCards();
+    validateForm();
     document.getElementById('inputDiv').disabled = false;
     document.getElementById('editDiv').style.display = "none";
     document.getElementById('searchDiv').style.display = "none";
@@ -30,17 +31,56 @@ const cardPic = 'cardPic';
 //Validation
 const validateForm = () => {
 
-    // if(areAllNull()) {
-    //     document.getElementById('errorText').innerHTML = "";
-    //     document.getElementById('addCardButton').disabled = true;
-    //     return false
-    // }
-
-    if(0) {
+    if(areAllInputsNull()) {
         document.getElementById('errorText').innerHTML = "";
         document.getElementById('addCardButton').disabled = true;
         return false
     }
+
+    if(isCardNameInputNull()) {
+        document.getElementById('errorText').innerHTML = "You need a card name.";
+        document.getElementById('addCardButton').disabled = true;
+        return false
+    }
+
+    if(!isCardNameUnique()) {
+        document.getElementById('errorText').innerHTML = "Card name in use.";
+        document.getElementById('addCardButton').disabled = true;
+        return false
+    }
+
+    if(isCardTypeInputNull()) {
+        document.getElementById('errorText').innerHTML = "Pick a card type.";
+        document.getElementById('addCardButton').disabled = true;
+        return false
+    }
+
+    if(isManaCostInputinvalid()) {
+        document.getElementById('errorText').innerHTML = "You need a valid mana cost.";
+        document.getElementById('addCardButton').disabled = true;
+        return false
+    } 
+
+    if(isCardValueInputNull()) {
+        document.getElementById('errorText').innerHTML = "How valuable is your card?";
+        document.getElementById('addCardButton').disabled = true;
+        return false
+    }
+
+    if(!isCardValueInputANumber()) {
+        document.getElementById('errorText').innerHTML = "You need a valid value.";
+        document.getElementById('addCardButton').disabled = true;
+        return false
+    }
+
+    // if(isPictureInputNull()) {
+    //     document.getElementById('errorText').innerHTML = "Add a picture.";
+    //     document.getElementById('addCardButton').disabled = true;
+    //     return false
+    // }
+
+    document.getElementById('addCardButton').disabled = false;
+    document.getElementById('errorText').innerHTML = "Form valid.";
 
 }
 
@@ -81,20 +121,22 @@ const listMyCards = () => {
 addCardButton.onclick = (e) => {
     e.preventDefault();
     addCard();
-    let inputs = document.querySelectorAll('input')
-    inputs.forEach(input => {
-    input.value = '';
-    });
+    // let inputs = document.querySelectorAll('input')
+    // inputs.forEach(input => {
+    // input.value = '';
+    // });
     listMyCards();
+    validateForm();
 }
 
 clearFormButton.onclick = (e) => {
     e.preventDefault();
-    let inputs = document.querySelectorAll('input')
-    inputs.forEach(input => {
-        input.value = '';
-    });
+    // let inputs = document.querySelectorAll('input')
+    // inputs.forEach(input => {
+    //     input.value = '';
+    // });
     listMyCards();
+    validateForm();
 }
 
 
