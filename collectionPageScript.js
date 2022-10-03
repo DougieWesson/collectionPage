@@ -1,5 +1,6 @@
 
 let cardList = JSON.parse(localStorage.getItem('cardList')) || [];
+let removeMode = false;
 
 document.getElementById('body').onload = () =>{
     // let inputs = document.querySelectorAll('input')
@@ -11,7 +12,10 @@ document.getElementById('body').onload = () =>{
     document.getElementById('inputDiv').style.display = "block";
     document.getElementById('editDiv').style.display = "none";
     document.getElementById('searchDiv').style.display = "none";
-    document.getElementById('removeMode').disabled = true;
+    let deleteButtons = document.getElementsByClassName('removeButton')
+    for (let i=0; i<deleteButtons.length; i++) {
+        deleteButtons[i].disabled = true;
+    };
     }
 
 const addCardButton = document.getElementById('addCardButton');
@@ -24,7 +28,7 @@ const removeModeButton = document.getElementById('removeModeButton');
 
 const cardName = 'cardName';
 const cardType = 'cardType';
-const cardCost = 'cardCost';
+const cardCost = 'cardCost'; 
 const cardPic = 'cardPic';
 
 
@@ -102,7 +106,7 @@ const listMyCards = () => {
                         <br> Card Type: ${x[cardType]}
                         <br> Card Cost: ${x[cardCost]}
                         <br> Picture: ${x[cardPic]}
-                        <br> <input type="button" value="Remove" id=${"removeId" + i}>
+                        <br> <input type="button" value="Remove" class="removeButton" id=${"removeId" + i}>
                         <br>
                         </li>`
     });
@@ -114,8 +118,13 @@ const listMyCards = () => {
             listMyCards();
             localStorage.setItem('cardList', JSON.stringify(cardList));
         };
-    
         });
+        let deleteButtons = document.getElementsByClassName('removeButton')
+    if (removeMode == false) {
+        for (let i=0; i<deleteButtons.length; i++) {
+            deleteButtons[i].disabled = !removeMode;
+        };
+    }
 }
 
 addCardButton.onclick = (e) => {
@@ -144,7 +153,6 @@ addModeButton.onclick = (e) => {
     document.getElementById('inputDiv').style.display = "block";
     document.getElementById('editDiv').style.display = "none";
     document.getElementById('searchDiv').style.display = "none";
-    document.getElementById('removeMode').disabled = true;
     listMyCards();
     validateForm();
 }
@@ -154,7 +162,6 @@ editModeButton.onclick = (e) => {
     document.getElementById('inputDiv').style.display = "none";
     document.getElementById('editDiv').style.display = "block";
     document.getElementById('searchDiv').style.display = "none";
-    document.getElementById('removeMode').disabled = true;
     listMyCards();
     validateForm();
 }
@@ -164,17 +171,16 @@ searchModeButton.onclick = (e) => {
     document.getElementById('inputDiv').style.display = "none";
     document.getElementById('editDiv').style.display = "none";
     document.getElementById('searchDiv').style.display = "block";
-    document.getElementById('removeMode').disabled = true;
     listMyCards();
     validateForm();
 }
 
 removeModeButton.onclick = (e) => {
     e.preventDefault();
-    if(document.getElementById('removeMode').disabled = true){
-        document.getElementById('removeMode').disabled = false;
-    } else if (document.getElementById('removeMode').disabled = false) {
-        document.getElementById('removeMode').disabled = true
+    removeMode = !removeMode;
+        let deleteButtons = document.getElementsByClassName('removeButton')
+    for (let i=0; i<deleteButtons.length; i++) {
+        deleteButtons[i].disabled = !removeMode;
     };
     listMyCards();
     validateForm();

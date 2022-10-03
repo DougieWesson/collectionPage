@@ -75,6 +75,26 @@ main {
     align-items: flex-start;
 }
 
+#card-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items: flex-start;
+}
+
+li {
+    height: 88mm;
+    width: 63mm;
+    margin: 20px;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: red;
+}
+
 .testBox {
     height: 200px;
     width: 160px;

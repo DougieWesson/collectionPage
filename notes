@@ -22,7 +22,7 @@ As a user ..
 Acceptance criteria:
 
 **When an item is added, it is immediately shown on the page
-Each item in the collection must be easily distinguishable using styles
+**Each item in the collection must be easily distinguishable using styles
 
 
 **ID: 2-3
@@ -36,7 +36,7 @@ Acceptance criteria:
 **When the page loads, if there are items in the collection, they should be shown
 
 
-ID: 2-4
+**ID: 2-4
 
 As a user ...
 ... I want to delete items from my collection
@@ -45,7 +45,7 @@ As a user ...
 Acceptance criteria:
 
 **Each item should have something I can click on to delete an item from the collection
-It should be clear what I need to click on to delete an item.
+**It should be clear what I need to click on to delete an item.
 
 
 ID: 2-5
