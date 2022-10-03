@@ -31,8 +31,8 @@
                         <option value="Instant">Instant</option> //add more types
                     </select>
                     <br>
-                    <label for="cardCost">Mana Cost:</label> 
-                    <input type = "text" name ="cardCost" id="cardCostInput" onchange="validateForm()">
+                    <label for="manaCost">Mana Cost:</label> 
+                    <input type = "text" name ="manaCost" id="manaCostInput" onchange="validateForm()">
                     <br>
                     <label for="cardValue">Card Value:</label> 
                     <input type = "text" name ="cardValue" id="cardValueInput" onchange="validateForm()">
@@ -57,8 +57,8 @@
                         <option value="Instant">Instant</option> //add more types
                     </select>
                     <br>
-                    <label for="cardCost">Mana Cost:</label> 
-                    <input type = "text" name ="cardCost" id="cardCostEdit">
+                    <label for="manaCost">Mana Cost:</label> 
+                    <input type = "text" name ="manaCost" id="manaCostEdit">
                     <br>
                     <label for="cardValue">Card Value:</label> 
                     <input type = "text" name ="cardValue" id="cardValueEdit">
@@ -83,8 +83,8 @@
                         <option value="Instant">Instant</option> //add more types
                     </select>
                     <br>
-                    <label for="cardCost">Mana Cost:</label> 
-                    <input type = "text" name ="cardCost" id="cardCostSearch">
+                    <label for="manaCost">Mana Cost:</label> 
+                    <input type = "text" name ="manaCost" id="manaCostSearch">
                     <br>
                     <label for="cardValue">Card Value:</label> 
                     <input type = "text" name ="cardValue" id="cardValueSearch">
@@ -115,12 +115,24 @@
                 </button>
             </div>
             <div class="controlContent" id="sortBox">
-                sort box
                 <label for="cardSort">Sort By:</label> 
+                <div>
                     <select name ="cardSort" id="cardSort">
                         <option value="Card Name">Card Name</option> 
                         <option value="Card Type">Card type</option> //add more types
+                        <option value="Mana Cost">Mana Cost</option>
+                        <option value="Card Value">Card Value</option>
                     </select>
+                    <br>
+                    <select name="sortType" id="sortType">
+                        <option value="Ascending">Ascending</option>
+                        <option value="Descending">Descending</option>
+                    </select>
+                    <br>
+                    <button id="sortButton">
+                        Sort
+                    </button>
+                </div>
             </div>
 
         </div>
