@@ -140,10 +140,13 @@ addCardButton.onclick = (e) => {
 
 clearFormButton.onclick = (e) => {
     e.preventDefault();
-    // let inputs = document.querySelectorAll('input')
-    // inputs.forEach(input => {
-    //     input.value = '';
-    // });
+    let inputs = document.getElementsByTagName('input');
+    for(i=0; i<inputs.length; i++) {
+        if(inputs[i].type.toLowerCase() == "text") {
+            inputs[i].value = '';
+        };
+    };
+    
     listMyCards();
     validateForm();
 }
