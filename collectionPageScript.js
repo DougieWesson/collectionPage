@@ -27,6 +27,24 @@ const cardCost = 'cardCost';
 const cardPic = 'cardPic';
 
 
+//Validation
+const validateForm = () => {
+
+    // if(areAllNull()) {
+    //     document.getElementById('errorText').innerHTML = "";
+    //     document.getElementById('addCardButton').disabled = true;
+    //     return false
+    // }
+
+    if(0) {
+        document.getElementById('errorText').innerHTML = "";
+        document.getElementById('addCardButton').disabled = true;
+        return false
+    }
+
+}
+
+
 const addCard = () => {
     const card = {
         [cardName]:document.forms.inputForm.cardNameInput.value,
@@ -44,7 +62,7 @@ const listMyCards = () => {
                         <br> Card Type: ${x[cardType]}
                         <br> Card Cost: ${x[cardCost]}
                         <br> Picture: ${x[cardPic]}
-                        <br> <input type="button" value="Remove" id=${"removeId + i"}>
+                        <br> <input type="button" value="Remove" id=${"removeId" + i}>
                         <br>
                         </li>`
     });
@@ -81,19 +99,19 @@ clearFormButton.onclick = (e) => {
 
 
 /*
-load cardList from localstorage on page
-on load, list my cardList
-on load, clear the form
+load cardList from localstorage on page +
+on load, list my cardList+
+on load, clear the form+
 
-pull buttons from the document
+pull buttons from the document+
 
-define the addCard function
+define the addCard function+
 
-define the listMyCards function
+define the listMyCards function+
 
 define form validation for card input
 
-define clear form button
+define clear form button+
 
 
 make add items form
