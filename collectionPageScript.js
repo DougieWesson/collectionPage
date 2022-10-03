@@ -8,7 +8,7 @@ document.getElementById('body').onload = () =>{
     // });
     listMyCards();
     validateForm();
-    document.getElementById('inputDiv').disabled = false;
+    document.getElementById('inputDiv').style.display = "block";
     document.getElementById('editDiv').style.display = "none";
     document.getElementById('searchDiv').style.display = "none";
     document.getElementById('removeMode').disabled = true;
@@ -139,21 +139,62 @@ clearFormButton.onclick = (e) => {
     validateForm();
 }
 
+addModeButton.onclick = (e) => {
+    e.preventDefault();
+    document.getElementById('inputDiv').style.display = "block";
+    document.getElementById('editDiv').style.display = "none";
+    document.getElementById('searchDiv').style.display = "none";
+    document.getElementById('removeMode').disabled = true;
+    listMyCards();
+    validateForm();
+}
+
+editModeButton.onclick = (e) => {
+    e.preventDefault();
+    document.getElementById('inputDiv').style.display = "none";
+    document.getElementById('editDiv').style.display = "block";
+    document.getElementById('searchDiv').style.display = "none";
+    document.getElementById('removeMode').disabled = true;
+    listMyCards();
+    validateForm();
+}
+
+searchModeButton.onclick = (e) => {
+    e.preventDefault();
+    document.getElementById('inputDiv').style.display = "none";
+    document.getElementById('editDiv').style.display = "none";
+    document.getElementById('searchDiv').style.display = "block";
+    document.getElementById('removeMode').disabled = true;
+    listMyCards();
+    validateForm();
+}
+
+removeModeButton.onclick = (e) => {
+    e.preventDefault();
+    if(document.getElementById('removeMode').disabled = true){
+        document.getElementById('removeMode').disabled = false;
+    } else if (document.getElementById('removeMode').disabled = false) {
+        document.getElementById('removeMode').disabled = true
+    };
+    listMyCards();
+    validateForm();
+}
+
 
 /*
-load cardList from localstorage on page +
-on load, list my cardList+
-on load, clear the form+
++load cardList from localstorage on page +
++on load, list my cardList+
++on load, clear the form+
 
 pull buttons from the document+
 
-define the addCard function+
++define the addCard function+
 
-define the listMyCards function+
++define the listMyCards function+
 
-define form validation for card input
++define form validation for card input+
 
-define clear form button+
++define clear form button+
 
 
 make add items form
