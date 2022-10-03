@@ -52,7 +52,10 @@
                     <input type = "text" name ="cardName" id="cardNameEdit">
                     <br>
                     <label for="cardType">Card Type:</label> 
-                    <input type = "text" name ="cardType" id="cardTypeEdit">
+                    <select name ="cardType" id="cardTypeEdit" onchange="validateForm()">
+                        <option value="Creature">Creature</option> 
+                        <option value="Instant">Instant</option> //add more types
+                    </select>
                     <br>
                     <label for="cardCost">Mana Cost:</label> 
                     <input type = "text" name ="cardCost" id="cardCostEdit">
@@ -75,7 +78,10 @@
                     <input type = "text" name ="cardName" id="cardNameSearch">
                     <br>
                     <label for="cardType">Card Type:</label> 
-                    <input type = "text" name ="cardType" id="cardTypeSearch">
+                    <select name ="cardType" id="cardTypeSearch" onchange="validateForm()">
+                        <option value="Creature">Creature</option> 
+                        <option value="Instant">Instant</option> //add more types
+                    </select>
                     <br>
                     <label for="cardCost">Mana Cost:</label> 
                     <input type = "text" name ="cardCost" id="cardCostSearch">
