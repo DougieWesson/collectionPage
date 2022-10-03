@@ -2,7 +2,7 @@ const areAllInputsNull = () => {
     if (
         document.forms["inputForm"]["cardName"].value == ""
         && document.forms["inputForm"]["cardType"].value == ""
-        && document.forms["inputForm"]["cardCost"].value == ""
+        && document.forms["inputForm"]["manaCost"].value == ""
         && document.forms["inputForm"]["cardValue"].value == ""
         // && document.forms["inputForm"]["cardPic"].value == ""
         ) {
@@ -27,7 +27,7 @@ const isCardTypeInputNull = () => {
 }
 
 const isManaCostInputinvalid =() => {
-    let cardCost = document.forms["inputForm"]["cardCost"].value;
+    let cardCost = document.forms["inputForm"]["manaCost"].value;
     let cardCostRegEx = /^[WUBRGXwubrgx0-9]*$/i;
     return !cardCostRegEx.test(cardCost);
 }

@@ -74,7 +74,7 @@ It should be clear what a user has to do to edit an item
 When editing is complete, the item is updated and the updated item is shown in the collection
 
 
-ID: 2-7
+**ID: 2-7
 
 As a user ...
 ... I want to order/sort my collection by at least 1 of the properties
