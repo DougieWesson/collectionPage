@@ -82,6 +82,6 @@ As a user ...
 
 Acceptance criteria:
 
-User can select at least 1 property to sort by
-It should be clear how the user can do this
+**User can select at least 1 property to sort by
+**It should be clear how the user can do this
 When the sort property is selected, the items are sorted and shown in the new order

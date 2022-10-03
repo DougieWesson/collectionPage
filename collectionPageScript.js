@@ -28,7 +28,8 @@ const removeModeButton = document.getElementById('removeModeButton');
 
 const cardName = 'cardName';
 const cardType = 'cardType';
-const cardCost = 'cardCost'; 
+const manaCost = 'manaCost'; 
+const cardValue = 'cardValue';
 const cardPic = 'cardPic';
 
 
@@ -93,8 +94,9 @@ const addCard = () => {
     const card = {
         [cardName]:document.forms.inputForm.cardNameInput.value,
         [cardType]:document.forms.inputForm.cardTypeInput.value,
-        [cardCost]:document.forms.inputForm.cardCostInput.value,
+        [manaCost]:document.forms.inputForm.manaCostInput.value,
         [cardPic]:document.forms.inputForm.cardPicInput.value,
+        [cardValue]:document.forms.inputForm.cardValueInput.value,
     }
     cardList.push(card);
 }
@@ -104,7 +106,8 @@ const listMyCards = () => {
     cardList.forEach((x, i) => {
         listOfCards += `<li> Card Name: ${x[cardName]}
                         <br> Card Type: ${x[cardType]}
-                        <br> Card Cost: ${x[cardCost]}
+                        <br> Mana Cost: ${x[manaCost]}
+                        <br> Card Value: ${x[cardValue]}
                         <br> Picture: ${x[cardPic]}
                         <br> <input type="button" value="Remove" class="removeButton" id=${"removeId" + i}>
                         <br>
@@ -185,6 +188,116 @@ removeModeButton.onclick = (e) => {
     for (let i=0; i<deleteButtons.length; i++) {
         deleteButtons[i].disabled = !removeMode;
     };
+    listMyCards();
+    validateForm();
+}
+
+//Sort functionality
+const sortSelector = document.getElementById('cardSort');
+const sortTypeSelector = document.getElementById('sortType');
+const sortButton = document.getElementById('sortButton');
+
+const sortMyCards = () => {
+    if(sortTypeSelector.value == "Ascending") {
+    switch(sortSelector.value) {
+        case "Card Name":
+            cardList.sort((a,b) => {
+                if(a.cardName > b.cardName) {
+                    return 1;
+                } else if (a.cardName < b.cardName) {
+                    return -1;
+                } else {
+                    return 0;
+                };
+            });
+            break;
+        case "Card Type":
+            cardList.sort((a,b) => {
+                if(a.cardType > b.cardType) {
+                    return 1;
+                } else if (a.cardType < b.cardType) {
+                    return -1;
+                } else {
+                    return 0;
+                };
+            });
+            break;
+        case "Mana Cost":
+            cardList.sort((a,b) => {
+                if(a.manaCost > b.manaCost) {
+                    return 1;
+                } else if (a.manaCost < b.manaCost) {
+                    return -1;
+                } else {
+                    return 0;
+                };
+            });
+            break;
+        case "Card Value":
+            cardList.sort((a,b) => {
+                if(a.cardValue > b.cardValue) {
+                    return 1;
+                } else if (a.cardValue < b.cardValue) {
+                    return -1;
+                } else {
+                    return 0;
+                };
+            });
+            break;
+    }
+} else if (sortTypeSelector.value == "Descending") {
+    switch(sortSelector.value) {
+        case "Card Name":
+            cardList.sort((a,b) => {
+                if(a.cardName > b.cardName) {
+                    return -1;
+                } else if (a.cardName < b.cardName) {
+                    return 1;
+                } else {
+                    return 0;
+                };
+            });
+            break;
+        case "Card Type":
+            cardList.sort((a,b) => {
+                if(a.cardType > b.cardType) {
+                    return -1;
+                } else if (a.cardType < b.cardType) {
+                    return 1;
+                } else {
+                    return 0;
+                };
+            });
+            break;
+        case "Mana Cost":
+            cardList.sort((a,b) => {
+                if(a.manaCost > b.manaCost) {
+                    return -1;
+                } else if (a.manaCost < b.manaCost) {
+                    return 1;
+                } else {
+                    return 0;
+                };
+            });
+            break;
+        case "Card Value":
+            cardList.sort((a,b) => {
+                if(a.cardValue > b.cardValue) {
+                    return -1;
+                } else if (a.cardValue < b.cardValue) {
+                    return 1;
+                } else {
+                    return 0;
+                };
+            });
+            break;
+    }
+}
+}
+
+sortButton.onclick = (e) => {
+    e.preventDefault();
+    sortMyCards();
     listMyCards();
     validateForm();
 }

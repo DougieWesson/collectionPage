@@ -59,7 +59,11 @@ button {
 }
 
 #sortBox {
-    width: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items: flex-start;
 }
 
 main {
