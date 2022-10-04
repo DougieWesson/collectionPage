@@ -162,10 +162,11 @@ const addCard = () => {
         [cardName]:document.forms.inputForm.cardNameInput.value,
         [cardType]:document.forms.inputForm.cardTypeInput.value,
         [manaCost]:document.forms.inputForm.manaCostInput.value,
-        [cardPic]:reader.result,
+        [cardPic]:dataURL,
         [cardValue]:document.forms.inputForm.cardValueInput.value,
     }
     cardList.push(card);
+    dataURL = '';
 }
 
 const editCard = () => {
@@ -173,13 +174,14 @@ const editCard = () => {
         [cardName]:document.forms.editForm.cardNameEdit.value,
         [cardType]:document.forms.editForm.cardTypeEdit.value,
         [manaCost]:document.forms.editForm.manaCostEdit.value,
-        [cardPic]:reader.result,
+        [cardPic]:dataURL,
         [cardValue]:document.forms.editForm.cardValueEdit.value,
     }
     const filterKey = document.forms["editForm"]["cardName"].value;
     let originalIndex = cardList.map(card => card.cardName).indexOf(document.forms["editForm"]["cardName"].value);
     cardList.splice(originalIndex, 1)
     cardList.push(card);
+    dataURL = '';
 }
 
 const listMyCards = () => {
