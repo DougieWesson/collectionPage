@@ -121,7 +121,7 @@ const attachPictureToCard = () => {
     cardList.forEach((x, i) => {
         const preview = document.getElementById('pictureId' + i);
         const image = new Image();
-        image.height = 180;
+        image.minheight = 180;
         image.width = 120;
         image.title = x[cardName];
         image.src = x[cardPic];
@@ -132,13 +132,12 @@ const attachPictureToCard = () => {
 const listMyCards = () => {
     let listOfCards = '';
     cardList.forEach((x, i) => {
-        listOfCards += `<li> Card Name: ${x[cardName]}
-                        <br> Card Type: ${x[cardType]}
+        listOfCards += `<li> Name: ${x[cardName]}
+                        <br> Type: ${x[cardType]}
                         <br> Mana Cost: ${x[manaCost]}
-                        <br> Card Value: ${x[cardValue]}
+                        <br> Value: ${x[cardValue]}
                         <br><div id=${"pictureId" + i}></div>
                         <br> <input type="button" value="Remove" class="removeButton" id=${"removeId" + i}>
-                        <br>
                         </li>`
     });
     document.getElementById('card-list').innerHTML = listOfCards;
