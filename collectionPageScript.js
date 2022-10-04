@@ -8,7 +8,7 @@ document.getElementById('body').onload = () =>{
     // input.value = '';
     // });
     listMyCards();
-    validateForm();
+    validateInputForm();
     document.getElementById('inputDiv').style.display = "block";
     document.getElementById('editDiv').style.display = "none";
     document.getElementById('searchDiv').style.display = "none";
@@ -20,6 +20,8 @@ document.getElementById('body').onload = () =>{
 
 const addCardButton = document.getElementById('addCardButton');
 const clearFormButton = document.getElementsByClassName('clearFormButton');
+
+const editCardButton = document.getElementById('editCardButton');
 
 const addModeButton = document.getElementById('addModeButton');
 const editModeButton = document.getElementById('editModeButton');
@@ -34,7 +36,7 @@ const cardPic = 'cardPic';
 
 
 //Validation
-const validateForm = () => {
+const validateInputForm = () => {
 
     if(areAllInputsNull()) {
         document.getElementById('errorText').innerHTML = "";
@@ -48,7 +50,7 @@ const validateForm = () => {
         return false
     }
 
-    if(!isCardNameUnique()) {
+    if(!isCardNameInputUnique()) {
         document.getElementById('errorText').innerHTML = "Card name in use.";
         document.getElementById('addCardButton').disabled = true;
         return false
@@ -89,6 +91,61 @@ const validateForm = () => {
 
 }
 
+const validateEditForm = () => {
+
+    if(areAllEditsNull()) {
+        document.getElementById('errorText').innerHTML = "";
+        document.getElementById('editCardButton').disabled = true;
+        return false
+    }
+
+    if(isCardNameEditNull()) {
+        document.getElementById('errorText').innerHTML = "You need a card name.";
+        document.getElementById('editCardButton').disabled = true;
+        return false
+    }
+
+    if(isCardNameEditUnique()) {
+        document.getElementById('errorText').innerHTML = "Card name not in use.";
+        document.getElementById('editCardButton').disabled = true;
+        return false
+    }
+
+    if(isCardTypeEditNull()) {
+        document.getElementById('errorText').innerHTML = "Pick a card type.";
+        document.getElementById('editCardButton').disabled = true;
+        return false
+    }
+
+    if(isManaCostEditinvalid()) {
+        document.getElementById('errorText').innerHTML = "You need a valid mana cost.";
+        document.getElementById('editCardButton').disabled = true;
+        return false
+    } 
+
+    if(isCardValueEditNull()) {
+        document.getElementById('errorText').innerHTML = "How valuable is your card?";
+        document.getElementById('editCardButton').disabled = true;
+        return false
+    }
+
+    if(!isCardValueEditANumber()) {
+        document.getElementById('errorText').innerHTML = "You need a valid value.";
+        document.getElementById('editCardButton').disabled = true;
+        return false
+    }
+
+    // if(isPictureEditNull()) {
+    //     document.getElementById('errorText').innerHTML = "Add a picture.";
+    //     document.getElementById('addCardButton').disabled = true;
+    //     return false
+    // }
+
+    document.getElementById('editCardButton').disabled = false;
+    document.getElementById('errorText').innerHTML = "Form valid.";
+
+}
+
 
 const addCard = () => {
     const card = {
@@ -98,6 +155,20 @@ const addCard = () => {
         [cardPic]:document.forms.inputForm.cardPicInput.value,
         [cardValue]:document.forms.inputForm.cardValueInput.value,
     }
+    cardList.push(card);
+}
+
+const editCard = () => {
+    const card = {
+        [cardName]:document.forms.editForm.cardNameEdit.value,
+        [cardType]:document.forms.editForm.cardTypeEdit.value,
+        [manaCost]:document.forms.editForm.manaCostEdit.value,
+        [cardPic]:document.forms.editForm.cardPicEdit.value,
+        [cardValue]:document.forms.editForm.cardValueEdit.value,
+    }
+    const filterKey = document.forms["editForm"]["cardName"].value;
+    let originalIndex = cardList.map(card => card.cardName).indexOf(document.forms["editForm"]["cardName"].value);
+    cardList.splice(originalIndex, 1)
     cardList.push(card);
 }
 
@@ -138,7 +209,14 @@ addCardButton.onclick = (e) => {
     // input.value = '';
     // });
     listMyCards();
-    validateForm();
+    validateInputForm();
+}
+
+editCardButton.onclick = (e) => {
+    e.preventDefault();
+    editCard();
+    listMyCards();
+    validateEditForm();
 }
 
 clearFormButton.onclick = (e) => {
@@ -151,7 +229,7 @@ clearFormButton.onclick = (e) => {
     };
     
     listMyCards();
-    validateForm();
+    validateInputForm();
 }
 
 addModeButton.onclick = (e) => {
@@ -160,7 +238,7 @@ addModeButton.onclick = (e) => {
     document.getElementById('editDiv').style.display = "none";
     document.getElementById('searchDiv').style.display = "none";
     listMyCards();
-    validateForm();
+    validateInputForm();
 }
 
 editModeButton.onclick = (e) => {
@@ -169,7 +247,8 @@ editModeButton.onclick = (e) => {
     document.getElementById('editDiv').style.display = "block";
     document.getElementById('searchDiv').style.display = "none";
     listMyCards();
-    validateForm();
+    validateInputForm();
+    validateEditForm();
 }
 
 searchModeButton.onclick = (e) => {
@@ -178,7 +257,7 @@ searchModeButton.onclick = (e) => {
     document.getElementById('editDiv').style.display = "none";
     document.getElementById('searchDiv').style.display = "block";
     listMyCards();
-    validateForm();
+    validateInputForm();
 }
 
 removeModeButton.onclick = (e) => {
@@ -189,7 +268,7 @@ removeModeButton.onclick = (e) => {
         deleteButtons[i].disabled = !removeMode;
     };
     listMyCards();
-    validateForm();
+    validateInputForm();
 }
 
 //Sort functionality
@@ -299,7 +378,7 @@ sortButton.onclick = (e) => {
     e.preventDefault();
     sortMyCards();
     listMyCards();
-    validateForm();
+    validateInputForm();
 }
 
 
