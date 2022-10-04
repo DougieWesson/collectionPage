@@ -28,7 +28,12 @@
                     <label for="cardType">Card Type:</label> 
                     <select name ="cardType" id="cardTypeInput" onchange="validateInputForm()">
                         <option value="Creature">Creature</option> 
-                        <option value="Instant">Instant</option> //add more types
+                        <option value="Instant">Instant</option>
+                        <option value="Sorcery">Sorcery</option>
+                        <option value="Enchantment">Enchantment</option>
+                        <option value="Artifact">Artifact</option>
+                        <option value="Land">Land</option>
+                        <option value="Planeswalker">Planeswalker</option>
                     </select>
                     <br>
                     <label for="manaCost">Mana Cost:</label> 
@@ -40,9 +45,11 @@
                     <label for="cardPic">Picture???:</label> 
                     <input type = "file" name ="cardPic" id="cardPicInput" accept="image/*" onchange="validateInputForm()">
                     <br>
-                    <input type ="button" value="Add Card" id="addCardButton">
-                    <input type ="button" value="Clear Form" class="clearFormButton">
                     <br>
+                    <div class="buttonHolder">
+                    <button id="addCardButton"> Add Card </button>
+                    <button class="clearFormButton"> Clear Form </button>
+                    </div>
                 </form>
             </div>
 
@@ -54,7 +61,12 @@
                     <label for="cardType">Card Type:</label> 
                     <select name ="cardType" id="cardTypeEdit" onchange="validateEditForm()">
                         <option value="Creature">Creature</option> 
-                        <option value="Instant">Instant</option> //add more types
+                        <option value="Instant">Instant</option>
+                        <option value="Sorcery">Sorcery</option>
+                        <option value="Enchantment">Enchantment</option>
+                        <option value="Artifact">Artifact</option>
+                        <option value="Land">Land</option>
+                        <option value="Planeswalker">Planeswalker</option>
                     </select>
                     <br>
                     <label for="manaCost">Mana Cost:</label> 
@@ -66,9 +78,11 @@
                     <label for="cardPic">Picture???:</label> 
                     <input type = "file" name ="cardPic" id="cardPicEdit" accept="image/*" onchange="validateEditForm()">
                     <br>
-                    <input type ="button" value="Edit Card" id="editCardButton">
-                    <input type ="button" value="Clear Form" class="clearFormButton">
                     <br>
+                    <div class="buttonHolder">
+                        <button id="editCardButton" display="inline-block"> Edit Card </button>
+                        <button class="clearFormButton" display="inline-block"> Clear Form </button>
+                    </div>
                 </form>
             </div>
             
@@ -80,7 +94,12 @@
                     <label for="cardType">Card Type:</label> 
                     <select name ="cardType" id="cardTypeSearch">
                         <option value="Creature">Creature</option> 
-                        <option value="Instant">Instant</option> //add more types
+                        <option value="Instant">Instant</option>
+                        <option value="Sorcery">Sorcery</option>
+                        <option value="Enchantment">Enchantment</option>
+                        <option value="Artifact">Artifact</option>
+                        <option value="Land">Land</option>
+                        <option value="Planeswalker">Planeswalker</option>
                     </select>
                     <br>
                     <label for="manaCost">Mana Cost:</label> 
@@ -89,9 +108,12 @@
                     <label for="cardValue">Card Value:</label> 
                     <input type = "text" name ="cardValue" id="cardValueSearch">
                     <br>
-                    <input type ="button" value="Search" id="SearchButton">
-                    <input type ="button" value="Clear Form" class="clearFormButton">
                     <br>
+                    <br>
+                    <div class="buttonHolder">
+                        <button id="SearchButton"> Search </button>
+                        <button class="clearFormButton"> Clear Form </button>
+                    </div>
                 </form>
             </div>
 
@@ -128,6 +150,7 @@
                         <option value="Ascending">Ascending</option>
                         <option value="Descending">Descending</option>
                     </select>
+                    <br>
                     <br>
                     <button id="sortButton">
                         Sort

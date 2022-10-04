@@ -1,13 +1,16 @@
-div {
-    margin: 10px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: red;
-    min-height: 100px;
+/* Colour Palette */
+:root {
+    --backdrop: rgb(83, 82, 92);
+    --contentBox: rgb(63, 61, 73);
+    --border: white;
+    --accent: red;
+    --font: rgb(219, 213, 202);
 }
 
 body {
     padding: 10px;
+    background-color: var(--backdrop);
+    color: var(--font);
 }
 
 #topBox {
@@ -21,31 +24,44 @@ h1 {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--contentBox);
 }
 
 #controlBox {
-    width: 80%;
+    width: 60%;
     height: fit-content;
+    margin-left: 5%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items:center;
+    align-items:flex-start;
 }
 
 #formBox {
     width: 50%;
+    margin-right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--contentBox);
 }
 
 #sideBox {
     width: 50%;
+    height: 150px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--contentBox);
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items:center;
 }
 
 #modeBox {
     width: 200px;
+    height: 150px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -55,10 +71,25 @@ h1 {
 
 button {
     width: 70px;
-    height: 30px;
+    height: 35px;
+    background-color: var(--backdrop);
+    color: var(--font);
+}
+
+button:hover {
+    scale: 1.05;
+}
+
+.buttonHolder {
+    width: 180px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 #sortBox {
+    height: 100px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -68,9 +99,6 @@ button {
 
 main {
     margin: 5px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: red;
     min-height: 500px;
     display: flex;
     flex-direction: row;
@@ -92,18 +120,7 @@ li {
     height: 88mm;
     width: 63mm;
     margin: 20px;
-    padding: 5px;
-    border-style: solid;
+    padding: 20px;
+    background-color: var(--contentBox);
     border-radius: 10px;
-    border-width: 2px;
-    border-color: red;
-}
-
-.testBox {
-    height: 200px;
-    width: 160px;
-    margin: 20px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: red;
 }

@@ -85,3 +85,21 @@ Acceptance criteria:
 **User can select at least 1 property to sort by
 **It should be clear how the user can do this
 When the sort property is selected, the items are sorted and shown in the new order
+
+
+
+
+declare a reader as a new filReader
+make a blank variable
+when the reader 'onloads', set blank variable = reader.result
+
+reader.readasDataURL.(wherever the file is coming from).files[0]
+reader.readAsDataURL(document.forms["inputForm"]["cardPic"].files[0]);
+
+[pictureKey]:[blank variable name]
+
+
+when constructing list, add a div for holding the picture
+<div id=${"pictureId" + i}></div>
+
+then append the child image to the parent div

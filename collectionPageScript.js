@@ -38,7 +38,6 @@ let dataURL;
 const reader = new FileReader();
 reader.onload = () => {
     dataURL = reader.result;
-    
 }
 
 
