@@ -23,22 +23,22 @@
             <div id="inputDiv">
                 <form name="inputForm" id="inputForm">
                     <label for="cardName">Card Name:</label> 
-                    <input type = "text" name ="cardName" id="cardNameInput" onchange="validateForm()">
+                    <input type = "text" name ="cardName" id="cardNameInput" onchange="validateInputForm()">
                     <br>
                     <label for="cardType">Card Type:</label> 
-                    <select name ="cardType" id="cardTypeInput" onchange="validateForm()">
+                    <select name ="cardType" id="cardTypeInput" onchange="validateInputForm()">
                         <option value="Creature">Creature</option> 
                         <option value="Instant">Instant</option> //add more types
                     </select>
                     <br>
                     <label for="manaCost">Mana Cost:</label> 
-                    <input type = "text" name ="manaCost" id="manaCostInput" onchange="validateForm()">
+                    <input type = "text" name ="manaCost" id="manaCostInput" onchange="validateInputForm()">
                     <br>
                     <label for="cardValue">Card Value:</label> 
-                    <input type = "text" name ="cardValue" id="cardValueInput" onchange="validateForm()">
+                    <input type = "text" name ="cardValue" id="cardValueInput" onchange="validateInputForm()">
                     <br>
                     <label for="cardPic">Picture???:</label> 
-                    <input type = "file" name ="cardPic" id="cardPicInput" onchange="validateForm()">
+                    <input type = "file" name ="cardPic" id="cardPicInput" onchange="validateInputForm()">
                     <br>
                     <input type ="button" value="Add Card" id="addCardButton">
                     <input type ="button" value="Clear Form" class="clearFormButton">
@@ -49,22 +49,22 @@
             <div id="editDiv">
                 <form name="editForm" id="editForm">
                     <label for="cardName">Card Name:</label> 
-                    <input type = "text" name ="cardName" id="cardNameEdit">
+                    <input type = "text" name ="cardName" id="cardNameEdit" onchange="validateEditForm()">
                     <br>
                     <label for="cardType">Card Type:</label> 
-                    <select name ="cardType" id="cardTypeEdit" onchange="validateForm()">
+                    <select name ="cardType" id="cardTypeEdit" onchange="validateEditForm()">
                         <option value="Creature">Creature</option> 
                         <option value="Instant">Instant</option> //add more types
                     </select>
                     <br>
                     <label for="manaCost">Mana Cost:</label> 
-                    <input type = "text" name ="manaCost" id="manaCostEdit">
+                    <input type = "text" name ="manaCost" id="manaCostEdit" onchange="validateEditForm()">
                     <br>
                     <label for="cardValue">Card Value:</label> 
-                    <input type = "text" name ="cardValue" id="cardValueEdit">
+                    <input type = "text" name ="cardValue" id="cardValueEdit" onchange="validateEditForm()">
                     <br>
                     <label for="cardPic">Picture???:</label> 
-                    <input type = "text" name ="cardPic" id="cardPicEdit">
+                    <input type = "file" name ="cardPic" id="cardPicEdit" onchange="validateEditForm()">
                     <br>
                     <input type ="button" value="Edit Card" id="editCardButton">
                     <input type ="button" value="Clear Form" class="clearFormButton">
@@ -78,7 +78,7 @@
                     <input type = "text" name ="cardName" id="cardNameSearch">
                     <br>
                     <label for="cardType">Card Type:</label> 
-                    <select name ="cardType" id="cardTypeSearch" onchange="validateForm()">
+                    <select name ="cardType" id="cardTypeSearch">
                         <option value="Creature">Creature</option> 
                         <option value="Instant">Instant</option> //add more types
                     </select>
