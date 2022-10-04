@@ -121,8 +121,8 @@ const attachPictureToCard = () => {
     cardList.forEach((x, i) => {
         const preview = document.getElementById('pictureId' + i);
         const image = new Image();
-        image.minheight = 180;
-        image.width = 120;
+        image.height = 210;
+        image.width = 140;
         image.title = x[cardName];
         image.src = x[cardPic];
         preview.appendChild(image);
