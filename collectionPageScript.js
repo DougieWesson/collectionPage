@@ -34,6 +34,14 @@ const manaCost = 'manaCost';
 const cardValue = 'cardValue';
 const cardPic = 'cardPic';
 
+let dataURL;
+
+const reader = new FileReader();
+reader.onload = () => {
+    dataURL = reader.result;
+    
+}
+
 
 //Validation
 const validateInputForm = () => {
@@ -80,11 +88,12 @@ const validateInputForm = () => {
         return false
     }
 
-    // if(isPictureInputNull()) {
-    //     document.getElementById('errorText').innerHTML = "Add a picture.";
-    //     document.getElementById('addCardButton').disabled = true;
-    //     return false
-    // }
+    if(isPictureInputNull()) {
+        document.getElementById('errorText').innerHTML = "Add a picture.";
+        document.getElementById('addCardButton').disabled = true;
+        return false
+    }
+    reader.readAsDataURL(document.forms["inputForm"]["cardPic"].files[0]);
 
     document.getElementById('addCardButton').disabled = false;
     document.getElementById('errorText').innerHTML = "Form valid.";
@@ -135,11 +144,12 @@ const validateEditForm = () => {
         return false
     }
 
-    // if(isPictureEditNull()) {
-    //     document.getElementById('errorText').innerHTML = "Add a picture.";
-    //     document.getElementById('addCardButton').disabled = true;
-    //     return false
-    // }
+    if(isPictureEditNull()) {
+        document.getElementById('errorText').innerHTML = "Add a picture.";
+        document.getElementById('addCardButton').disabled = true;
+        return false
+    }
+    reader.readAsDataURL(document.forms["editForm"]["cardPic"].files[0]);
 
     document.getElementById('editCardButton').disabled = false;
     document.getElementById('errorText').innerHTML = "Form valid.";
@@ -152,7 +162,7 @@ const addCard = () => {
         [cardName]:document.forms.inputForm.cardNameInput.value,
         [cardType]:document.forms.inputForm.cardTypeInput.value,
         [manaCost]:document.forms.inputForm.manaCostInput.value,
-        [cardPic]:document.forms.inputForm.cardPicInput.value,
+        [cardPic]:reader.result,
         [cardValue]:document.forms.inputForm.cardValueInput.value,
     }
     cardList.push(card);
@@ -163,7 +173,7 @@ const editCard = () => {
         [cardName]:document.forms.editForm.cardNameEdit.value,
         [cardType]:document.forms.editForm.cardTypeEdit.value,
         [manaCost]:document.forms.editForm.manaCostEdit.value,
-        [cardPic]:document.forms.editForm.cardPicEdit.value,
+        [cardPic]:reader.result,
         [cardValue]:document.forms.editForm.cardValueEdit.value,
     }
     const filterKey = document.forms["editForm"]["cardName"].value;
@@ -179,7 +189,7 @@ const listMyCards = () => {
                         <br> Card Type: ${x[cardType]}
                         <br> Mana Cost: ${x[manaCost]}
                         <br> Card Value: ${x[cardValue]}
-                        <br> Picture: ${x[cardPic]}
+                        <br> Picture: <div id=${"pictureId" + i}></div>
                         <br> <input type="button" value="Remove" class="removeButton" id=${"removeId" + i}>
                         <br>
                         </li>`
@@ -193,12 +203,25 @@ const listMyCards = () => {
             localStorage.setItem('cardList', JSON.stringify(cardList));
         };
         });
-        let deleteButtons = document.getElementsByClassName('removeButton')
-    if (removeMode == false) {
-        for (let i=0; i<deleteButtons.length; i++) {
+
+
+    cardList.forEach((x, i) => {
+        const preview = document.getElementById('pictureId' + i);
+        const image = new Image();
+        image.height = 160;
+        image.width = 120;
+        image.title = x[cardName];
+        image.src = x[cardPic];
+        preview.appendChild(image);
+        });
+
+
+    let deleteButtons = document.getElementsByClassName('removeButton')
+        if (removeMode == false) {
+            for (let i=0; i<deleteButtons.length; i++) {
             deleteButtons[i].disabled = !removeMode;
-        };
-    }
+            };
+        }
 }
 
 addCardButton.onclick = (e) => {
