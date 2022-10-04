@@ -186,9 +186,9 @@ const sortMyCards = () => {
             break;
         case "Card Value":
             cardList.sort((a,b) => {
-                if(a.cardValue > b.cardValue) {
+                if(Number(a.cardValue) > Number(b.cardValue)) {
                     return 1;
-                } else if (a.cardValue < b.cardValue) {
+                } else if (Number(a.cardValue) < Number(b.cardValue)) {
                     return -1;
                 } else {
                     return 0;
@@ -233,9 +233,9 @@ const sortMyCards = () => {
             break;
         case "Card Value":
             cardList.sort((a,b) => {
-                if(a.cardValue > b.cardValue) {
+                if(Number(a.cardValue) > Number(b.cardValue)) {
                     return -1;
-                } else if (a.cardValue < b.cardValue) {
+                } else if (Number(a.cardValue) < Number(b.cardValue)) {
                     return 1;
                 } else {
                     return 0;
@@ -252,7 +252,7 @@ const addCard = () => {
         [cardType]:document.forms.inputForm.cardTypeInput.value,
         [manaCost]:document.forms.inputForm.manaCostInput.value,
         [cardPic]:dataURL,
-        [cardValue]:document.forms.inputForm.cardValueInput.value,
+        [cardValue]:Number(document.forms.inputForm.cardValueInput.value),
     }
     cardList.push(card);
     dataURL = '';
@@ -264,9 +264,8 @@ const editCard = () => {
         [cardType]:document.forms.editForm.cardTypeEdit.value,
         [manaCost]:document.forms.editForm.manaCostEdit.value,
         [cardPic]:dataURL,
-        [cardValue]:document.forms.editForm.cardValueEdit.value,
+        [cardValue]:Number(document.forms.editForm.cardValueEdit.value),
     }
-    const filterKey = document.forms["editForm"]["cardName"].value;
     let originalIndex = cardList.map(card => card.cardName).indexOf(document.forms["editForm"]["cardName"].value);
     cardList.splice(originalIndex, 1)
     cardList.push(card);
