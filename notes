@@ -61,7 +61,7 @@ The image is shown as part of the item in the collection
 The image is stored with the item so that when I leave the page and come back, it is still shown in the collection
 
 
-ID: 2-6
+**ID: 2-6
 
 As a user ...
 ... I want to edit the properties of items in my collection
@@ -69,9 +69,9 @@ As a user ...
 
 Acceptance criteria:
 
-User can use a form to change an item's properties
+**User can use a form to change an item's properties
 It should be clear what a user has to do to edit an item
-When editing is complete, the item is updated and the updated item is shown in the collection
+**When editing is complete, the item is updated and the updated item is shown in the collection
 
 
 **ID: 2-7

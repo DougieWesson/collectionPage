@@ -45,7 +45,6 @@ const isPictureInputNull = () => {
 }
 
 
-
 const areAllEditsNull = () => {
     if (
         document.forms["editForm"]["cardName"].value == ""
