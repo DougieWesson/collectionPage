@@ -310,7 +310,7 @@ const addCard = () => {
     const card = {
         [cardName]:document.forms.inputForm.cardNameInput.value,
         [cardType]:document.forms.inputForm.cardTypeInput.value,
-        [manaCost]:document.forms.inputForm.manaCostInput.value,
+        [manaCost]:formatManaCost(document.forms.inputForm.manaCostInput.value),
         [cardPic]:dataURL,
         [cardValue]:Number(document.forms.inputForm.cardValueInput.value),
     }
@@ -321,7 +321,7 @@ const addCard = () => {
 const editCard = () => {
     let originalIndex = cardList.map(card => card.cardName).indexOf(document.forms["editForm"]["cardName"].value);
     cardList[originalIndex][cardType] = document.forms.editForm.cardTypeEdit.value;
-    cardList[originalIndex][manaCost] = document.forms.editForm.manaCostEdit.value;
+    cardList[originalIndex][manaCost] = formatManaCost(document.forms.editForm.manaCostEdit.value);
     cardList[originalIndex][cardValue] = document.forms.editForm.cardValueEdit.value;
 }
 
@@ -369,4 +369,19 @@ const populateEditForm = (cardIndex) => {
         document.forms.editForm.cardValueEdit.value = cardList[cardIndex][cardValue];
         // document.forms.editForm.cardPicEdit.value = cardList[originalIndex][cardPic];
         validateEditForm();
+}
+
+const formatManaCost = (rawManaCost) => {
+    let sortKey = "XWUBRG"
+    let characters = rawManaCost.toUpperCase();
+    let letters = characters.split("").filter(i => sortKey.includes(i) === true);
+    let numbers = characters.split("").filter(i => sortKey.includes(i) === false);
+    let manaSort = sortKey.split("").reduce((total, amount, index,) => {
+        total[amount] = index;
+        return total;
+    }, {});
+    let sortedLetters = numbers.concat(letters.sort((a,b) => {
+        return manaSort[a] - manaSort[b];
+    })).join("");
+    return sortedLetters;
 }
