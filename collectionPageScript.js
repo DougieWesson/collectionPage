@@ -1,6 +1,7 @@
 
 let cardList = JSON.parse(localStorage.getItem('cardList')) || [];
 let removeMode = false;
+let editMode = false;
 
 document.getElementById('body').onload = () =>{
     resetForms();
@@ -8,6 +9,7 @@ document.getElementById('body').onload = () =>{
     validateInputForm();
     showInputForm();
     disableRemoveButtons();
+    disableEditButtons();
     empowerClearFormButtons();
     }
 
@@ -135,12 +137,12 @@ const validateEditForm = () => {
         return false
     }
 
-    if(isPictureEditNull()) {
-        document.getElementById('errorText').innerHTML = "Add a picture.";
-        document.getElementById('addCardButton').disabled = true;
-        return false
-    }
-    reader.readAsDataURL(document.forms["editForm"]["cardPic"].files[0]);
+    // if(isPictureEditNull()) {
+    //     document.getElementById('errorText').innerHTML = "Add a picture.";
+    //     document.getElementById('addCardButton').disabled = true;
+    //     return false
+    // }
+    // reader.readAsDataURL(document.forms["editForm"]["cardPic"].files[0]);
 
     document.getElementById('editCardButton').disabled = false;
     document.getElementById('errorText').innerHTML = "Form valid.";
@@ -158,7 +160,6 @@ addCardButton.onclick = (e) => {
 editCardButton.onclick = (e) => {
     e.preventDefault();
     editCard();
-    resetForms();
     listMyCards();
     validateEditForm();
 }
@@ -166,6 +167,7 @@ editCardButton.onclick = (e) => {
 addModeButton.onclick = (e) => {
     e.preventDefault();
     resetForms();
+    disableEditButtons();
     showInputForm();
     listMyCards();
     validateInputForm();
@@ -174,6 +176,8 @@ addModeButton.onclick = (e) => {
 editModeButton.onclick = (e) => {
     e.preventDefault();
     resetForms();
+    disableRemoveButtons();
+    enableEditButtons();
     showEditForm();
     listMyCards();
     validateEditForm();
@@ -182,12 +186,14 @@ editModeButton.onclick = (e) => {
 searchModeButton.onclick = (e) => {
     e.preventDefault();
     resetForms();
+    disableEditButtons();
     showSearchForm();
     listMyCards();
 }
 
 removeModeButton.onclick = (e) => {
     e.preventDefault();
+    disableEditButtons();
     toggleRemoveMode();
     listMyCards();
     validateInputForm();
