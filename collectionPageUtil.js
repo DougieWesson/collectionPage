@@ -109,11 +109,17 @@ const empowerRemoveButtons = () => {
 }
 
 const makeRemoveButtonsConsistent = () => {
-    let deleteButtons = document.getElementsByClassName('removeButton')
+    let deleteButtons = document.querySelectorAll('.removeButton')
         if (removeMode == false) {
-            for (let i=0; i<deleteButtons.length; i++) {
-            deleteButtons[i].disabled = !removeMode;
-            };
+            deleteButtons.forEach((button) => {
+                button.disabled = true;
+                button.style.display = "none";
+            })
+        } else if (removeMode == true) {
+            deleteButtons.forEach((button) => {
+                button.disabled = false;
+                button.style.display = "block";
+            })
         }
 }
 
@@ -136,8 +142,8 @@ const listMyCards = () => {
                         <br> Type: ${x[cardType]}
                         <br> Mana Cost: ${x[manaCost]}
                         <br> Value: ${x[cardValue]}
-                        <br><div id=${"pictureId" + i}></div>
-                        <br> <input type="button" value="Remove" class="removeButton" id=${"removeId" + i}>
+                        <br> <div id=${"pictureId" + i}></div>
+                        <br> <button class="removeButton" id=${"removeId" + i}> Remove </button>
                         </li>`
     });
     document.getElementById('card-list').innerHTML = listOfCards;
@@ -270,4 +276,28 @@ const editCard = () => {
     cardList.splice(originalIndex, 1)
     cardList.push(card);
     dataURL = '';
+}
+
+const resetForms = () => {
+    document.getElementById("inputForm").reset();
+    document.getElementById("editForm").reset();
+    document.getElementById("searchForm").reset();
+}
+
+const showInputForm = () => {
+    document.getElementById('inputDiv').style.display = "block";
+    document.getElementById('editDiv').style.display = "none";
+    document.getElementById('searchDiv').style.display = "none";
+}
+
+const showEditForm = () => {
+    document.getElementById('inputDiv').style.display = "none";
+    document.getElementById('editDiv').style.display = "block";
+    document.getElementById('searchDiv').style.display = "none";
+} 
+
+const showSearchForm = () => {
+    document.getElementById('inputDiv').style.display = "none";
+    document.getElementById('editDiv').style.display = "none";
+    document.getElementById('searchDiv').style.display = "block";
 }

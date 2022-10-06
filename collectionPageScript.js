@@ -3,19 +3,27 @@ let cardList = JSON.parse(localStorage.getItem('cardList')) || [];
 let removeMode = false;
 
 document.getElementById('body').onload = () =>{
-    // let inputs = document.querySelectorAll('input')
-    // inputs.forEach(input => {
-    // input.value = '';
-    // });
+    resetForms();
     listMyCards();
     validateInputForm();
-    document.getElementById('inputDiv').style.display = "block";
-    document.getElementById('editDiv').style.display = "none";
-    document.getElementById('searchDiv').style.display = "none";
-    let deleteButtons = document.getElementsByClassName('removeButton')
-    for (let i=0; i<deleteButtons.length; i++) {
-        deleteButtons[i].disabled = true;
-    };
+    showInputForm();
+    let deleteButtons = document.querySelectorAll('.removeButton')
+    deleteButtons.forEach((button) => {
+        button.disabled = true;
+        button.style.display = "none";
+    })
+    
+
+    let clearFormButtons = document.querySelectorAll('.clearFormButton')
+    clearFormButtons.forEach((button) => {
+        button.onclick = (e) => {
+            e.preventDefault();
+            resetForms();
+            listMyCards();
+            validateInputForm();
+            validateEditForm();
+        }
+    });
     }
 
 const addCardButton = document.getElementById('addCardButton');
@@ -157,10 +165,7 @@ const validateEditForm = () => {
 addCardButton.onclick = (e) => {
     e.preventDefault();
     addCard();
-    // let inputs = document.querySelectorAll('input')
-    // inputs.forEach(input => {
-    // input.value = '';
-    // });
+    resetForms();
     listMyCards();
     validateInputForm();
 }
@@ -168,49 +173,32 @@ addCardButton.onclick = (e) => {
 editCardButton.onclick = (e) => {
     e.preventDefault();
     editCard();
+    resetForms();
     listMyCards();
     validateEditForm();
 }
 
-clearFormButton.onclick = (e) => {
-    e.preventDefault();
-    let inputs = document.getElementsByTagName('input');
-    for(i=0; i<inputs.length; i++) {
-        if(inputs[i].type.toLowerCase() == "text") {
-            inputs[i].value = '';
-        };
-    };
-    
-    listMyCards();
-    validateInputForm();
-}
-
 addModeButton.onclick = (e) => {
     e.preventDefault();
-    document.getElementById('inputDiv').style.display = "block";
-    document.getElementById('editDiv').style.display = "none";
-    document.getElementById('searchDiv').style.display = "none";
+    resetForms();
+    showInputForm();
     listMyCards();
     validateInputForm();
 }
 
 editModeButton.onclick = (e) => {
     e.preventDefault();
-    document.getElementById('inputDiv').style.display = "none";
-    document.getElementById('editDiv').style.display = "block";
-    document.getElementById('searchDiv').style.display = "none";
+    resetForms();
+    showEditForm();
     listMyCards();
-    validateInputForm();
     validateEditForm();
 }
 
 searchModeButton.onclick = (e) => {
     e.preventDefault();
-    document.getElementById('inputDiv').style.display = "none";
-    document.getElementById('editDiv').style.display = "none";
-    document.getElementById('searchDiv').style.display = "block";
+    resetForms();
+    showSearchForm();
     listMyCards();
-    validateInputForm();
 }
 
 removeModeButton.onclick = (e) => {
