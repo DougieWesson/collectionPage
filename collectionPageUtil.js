@@ -108,6 +108,14 @@ const empowerRemoveButtons = () => {
         });
 }
 
+const disableRemoveButtons = () => {
+    let deleteButtons = document.querySelectorAll('.removeButton')
+    deleteButtons.forEach((button) => {
+        button.disabled = true;
+        button.style.display = "none";
+    })
+}
+
 const makeRemoveButtonsConsistent = () => {
     let deleteButtons = document.querySelectorAll('.removeButton')
         if (removeMode == false) {
@@ -282,6 +290,19 @@ const resetForms = () => {
     document.getElementById("inputForm").reset();
     document.getElementById("editForm").reset();
     document.getElementById("searchForm").reset();
+}
+
+const empowerClearFormButtons = () => {
+    let clearFormButtons = document.querySelectorAll('.clearFormButton')
+    clearFormButtons.forEach((button) => {
+        button.onclick = (e) => {
+            e.preventDefault();
+            resetForms();
+            listMyCards();
+            validateInputForm();
+            validateEditForm();
+        }
+    });
 }
 
 const showInputForm = () => {
