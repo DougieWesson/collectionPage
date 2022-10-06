@@ -88,18 +88,14 @@ When the sort property is selected, the items are sorted and shown in the new or
 
 
 
+const iconiseManaCost = (xManaCost) => {
+    let sortKey = "XWUBRG"
+    let characters = rawManaCost.toLowerCase();
+    let letters = characters.split("").filter(i => sortKey.includes(i) === true);
+    let numbers = characters.split("").filter(i => sortKey.includes(i) === false).join("");
+    spreadManaCost = numbers.push(letters);
+    spreadManaCost.forEach((icon) => {
+        iconisedManaCost += `<i class="ms ms-${icon}"></i>`
+    })
 
-declare a reader as a new filReader
-make a blank variable
-when the reader 'onloads', set blank variable = reader.result
-
-reader.readasDataURL.(wherever the file is coming from).files[0]
-reader.readAsDataURL(document.forms["inputForm"]["cardPic"].files[0]);
-
-[pictureKey]:[blank variable name]
-
-
-when constructing list, add a div for holding the picture
-<div id=${"pictureId" + i}></div>
-
-then append the child image to the parent div
+}
