@@ -190,9 +190,10 @@ const attachPictureToCard = () => {
 const listMyCards = () => {
     let listOfCards = '';
     cardList.forEach((x, i) => {
+        const convertedMana = iconiseManaCost(x[manaCost])
         listOfCards += `<li> Name: ${x[cardName]}
                         <br> Type: ${x[cardType]}
-                        <br> Mana Cost: ${x[manaCost]}
+                        <br> Mana Cost: <span class="manaCostDisplay"> ${convertedMana}</span>
                         <br> Value: ${x[cardValue]}
                         <br> <div id=${"pictureId" + i}></div>
                         <br> <button class="removeButton" id=${"removeId" + i}> Remove </button> <button class="editButton" id=${"editId" + i}> Edit Card </button>
@@ -373,7 +374,7 @@ const populateEditForm = (cardIndex) => {
 
 const formatManaCost = (rawManaCost) => {
     let sortKey = "XWUBRG"
-    let characters = rawManaCost.toUpperCase();
+    let characters = rawManaCost.toLowerCase();
     let letters = characters.split("").filter(i => sortKey.includes(i) === true);
     let numbers = characters.split("").filter(i => sortKey.includes(i) === false);
     let manaSort = sortKey.split("").reduce((total, amount, index,) => {
@@ -384,4 +385,21 @@ const formatManaCost = (rawManaCost) => {
         return manaSort[a] - manaSort[b];
     })).join("");
     return sortedLetters;
+}
+
+const iconiseManaCost = (xManaCost) => {
+    let sortKey = "xwubrg"
+    let characters = xManaCost.toLowerCase();
+    let letters = characters.split("").filter(i => sortKey.includes(i) === true);
+    let numbers = characters.split("").filter(i => sortKey.includes(i) === false).join("").split(" ");
+    numbers.push(...letters);
+    let spreadManaCost = numbers;
+    console.log(typeof(spreadManaCost))
+    let iconisedManaCost = '';
+    spreadManaCost.forEach((icon) => {
+        if (icon !== '') {
+            iconisedManaCost = iconisedManaCost + `<i class="ms ms-${icon}"></i>`
+        }
+    })
+    return iconisedManaCost;
 }

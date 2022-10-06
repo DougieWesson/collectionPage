@@ -13,6 +13,11 @@ body {
     color: var(--font);
 }
 
+@font-face {
+    font-family: mana;
+    src: url(//cdn.jsdelivr.net/npm/mana-font@latest/css/mana.min.css);
+}
+
 #topBox {
     display: flexbox;
     flex-direction: row;
@@ -123,4 +128,10 @@ li {
     padding: 20px;
     background-color: var(--contentBox);
     border-radius: 10px;
+}
+
+.manaCostDisplay {
+    /* background-color: red; */
+    /* font-size: 30px; */
+    font-family: mana;
 }
