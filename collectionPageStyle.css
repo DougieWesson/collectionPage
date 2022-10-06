@@ -1,7 +1,7 @@
 /* Colour Palette */
 :root {
     --backdrop: rgb(83, 82, 92);
-    --contentBox: rgb(63, 61, 73);
+    --contentBox: rgb(52, 51, 60);
     --border: white;
     --accent: red;
     --font: rgb(219, 213, 202);
@@ -135,6 +135,26 @@ li {
     /* background-color: red; */
     /* font-size: 30px; */
     font-family: mana;
+}
+
+.ms.ms-g {
+    color: rgb(0, 115, 62);
+}
+
+.ms.ms-r {
+    color: rgb(211, 32, 42);
+}
+
+.ms.ms-u {
+    color: rgb(14, 104, 171);
+}
+
+.ms.ms-b {
+    color: purple;
+}
+
+.ms.ms-w {
+    color: rgb(249, 250, 244);
 }
 
 @media screen and (max-width: 600px) {
