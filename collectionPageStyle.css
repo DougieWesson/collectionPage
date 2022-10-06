@@ -40,7 +40,7 @@ h1 {
     margin-left: 5%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items:flex-start;
 }
 
@@ -103,7 +103,7 @@ button:hover {
 }
 
 main {
-    margin: 5px;
+    margin-left: 0%;
     min-height: 500px;
     display: flex;
     flex-direction: row;
@@ -113,12 +113,13 @@ main {
 }
 
 #card-list {
+    margin-left: 0%;
     list-style-type: none;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content:flex-start;
-    align-items: flex-start;
+    justify-content:center;
+
 }
 
 li {
@@ -134,4 +135,12 @@ li {
     /* background-color: red; */
     /* font-size: 30px; */
     font-family: mana;
+}
+
+@media screen and (max-width: 600px) {
+
+    #controlBox {
+        flex-direction:column
+    }
+    
 }
