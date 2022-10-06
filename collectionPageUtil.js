@@ -108,11 +108,40 @@ const empowerRemoveButtons = () => {
         });
 }
 
+const empowerEditButtons = () => {
+    cardList.forEach((x, i) => {
+        document.getElementById('editId' + i).onclick = () => {
+            let cardIndex = i;
+            populateEditForm(cardIndex);
+            listMyCards();
+        };
+        });
+}
+
 const disableRemoveButtons = () => {
     let deleteButtons = document.querySelectorAll('.removeButton')
     deleteButtons.forEach((button) => {
+        removeMode = false;
         button.disabled = true;
         button.style.display = "none";
+    })
+}
+
+const disableEditButtons = () => {
+    let editButtons = document.querySelectorAll('.editButton')
+    editButtons.forEach((button) => {
+        editMode = false;
+        button.disabled = true;
+        button.style.display = "none";
+    })
+}
+
+const enableEditButtons = () => {
+    let editButtons = document.querySelectorAll('.editButton')
+    editButtons.forEach((button) => {
+        editMode = true;
+        button.disabled = false;
+        button.style.display = "block";
     })
 }
 
@@ -125,6 +154,21 @@ const makeRemoveButtonsConsistent = () => {
             })
         } else if (removeMode == true) {
             deleteButtons.forEach((button) => {
+                button.disabled = false;
+                button.style.display = "block";
+            })
+        }
+}
+
+const makeEditButtonsConsistent = () => {
+    let editButtons = document.querySelectorAll('.editButton')
+        if (editMode == false) {
+            editButtons.forEach((button) => {
+                button.disabled = true;
+                button.style.display = "none";
+            })
+        } else if (editMode == true) {
+            editButtons.forEach((button) => {
                 button.disabled = false;
                 button.style.display = "block";
             })
@@ -151,15 +195,17 @@ const listMyCards = () => {
                         <br> Mana Cost: ${x[manaCost]}
                         <br> Value: ${x[cardValue]}
                         <br> <div id=${"pictureId" + i}></div>
-                        <br> <button class="removeButton" id=${"removeId" + i}> Remove </button>
+                        <br> <button class="removeButton" id=${"removeId" + i}> Remove </button> <button class="editButton" id=${"editId" + i}> Edit Card </button>
                         </li>`
     });
     document.getElementById('card-list').innerHTML = listOfCards;
     localStorage.setItem('cardList', JSON.stringify(cardList));
 
     empowerRemoveButtons();
+    empowerEditButtons();
     attachPictureToCard();
     makeRemoveButtonsConsistent();
+    makeEditButtonsConsistent();
 }
 
 const sortMyCards = () => {
@@ -273,17 +319,10 @@ const addCard = () => {
 }
 
 const editCard = () => {
-    const card = {
-        [cardName]:document.forms.editForm.cardNameEdit.value,
-        [cardType]:document.forms.editForm.cardTypeEdit.value,
-        [manaCost]:document.forms.editForm.manaCostEdit.value,
-        [cardPic]:dataURL,
-        [cardValue]:Number(document.forms.editForm.cardValueEdit.value),
-    }
     let originalIndex = cardList.map(card => card.cardName).indexOf(document.forms["editForm"]["cardName"].value);
-    cardList.splice(originalIndex, 1)
-    cardList.push(card);
-    dataURL = '';
+    cardList[originalIndex][cardType] = document.forms.editForm.cardTypeEdit.value;
+    cardList[originalIndex][manaCost] = document.forms.editForm.manaCostEdit.value;
+    cardList[originalIndex][cardValue] = document.forms.editForm.cardValueEdit.value;
 }
 
 const resetForms = () => {
@@ -323,17 +362,11 @@ const showSearchForm = () => {
     document.getElementById('searchDiv').style.display = "block";
 }
 
-const populateEditForm = () => {
-    if(isCardNameEditUnique()) {
-        document.getElementById('errorText').innerHTML = "Card name not in use.";
-        document.getElementById('editCardButton').disabled = true;
-        return false
-    } else if (!isCardNameEditUnique()) {
-        let originalIndex = cardList.map(card => card.cardName).indexOf(document.forms["editForm"]["cardName"].value);
-        document.forms.editForm.cardTypeEdit.value = cardList[originalIndex][cardType];
-        document.forms.editForm.manaCostEdit.value = cardList[originalIndex][manaCost];
-        document.forms.editForm.cardValueEdit.value = cardList[originalIndex][cardValue];
+const populateEditForm = (cardIndex) => {
+        document.forms.editForm.cardNameEdit.value = cardList[cardIndex][cardName];
+        document.forms.editForm.cardTypeEdit.value = cardList[cardIndex][cardType];
+        document.forms.editForm.manaCostEdit.value = cardList[cardIndex][manaCost];
+        document.forms.editForm.cardValueEdit.value = cardList[cardIndex][cardValue];
         // document.forms.editForm.cardPicEdit.value = cardList[originalIndex][cardPic];
-    }
-    validateEditForm();
+        validateEditForm();
 }
