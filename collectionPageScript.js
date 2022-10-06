@@ -64,7 +64,7 @@ const validateInputForm = () => {
     }
 
     if(isManaCostInputinvalid()) {
-        document.getElementById('errorText').innerHTML = "You need a valid mana cost.";
+        document.getElementById('errorText').innerHTML = "You need a valid mana cost, using the characters WUBRGX & 1-9.";
         document.getElementById('addCardButton').disabled = true;
         return false
     } 
@@ -76,7 +76,7 @@ const validateInputForm = () => {
     }
 
     if(!isCardValueInputANumber()) {
-        document.getElementById('errorText').innerHTML = "You need a valid value.";
+        document.getElementById('errorText').innerHTML = "You need a valid value, as a number.";
         document.getElementById('addCardButton').disabled = true;
         return false
     }
@@ -120,7 +120,7 @@ const validateEditForm = () => {
     }
 
     if(isManaCostEditinvalid()) {
-        document.getElementById('errorText').innerHTML = "You need a valid mana cost.";
+        document.getElementById('errorText').innerHTML = "You need a valid mana cost, using the characters WUBRGX & 1-9.";
         document.getElementById('editCardButton').disabled = true;
         return false
     } 
@@ -132,7 +132,7 @@ const validateEditForm = () => {
     }
 
     if(!isCardValueEditANumber()) {
-        document.getElementById('errorText').innerHTML = "You need a valid value.";
+        document.getElementById('errorText').innerHTML = "You need a valid value, as a number.";
         document.getElementById('editCardButton').disabled = true;
         return false
     }
@@ -145,7 +145,7 @@ const validateEditForm = () => {
     // reader.readAsDataURL(document.forms["editForm"]["cardPic"].files[0]);
 
     document.getElementById('editCardButton').disabled = false;
-    document.getElementById('errorText').innerHTML = "Form valid.";
+    document.getElementById('errorText').innerHTML = "";
 
 }
 
@@ -168,6 +168,7 @@ addModeButton.onclick = (e) => {
     e.preventDefault();
     resetForms();
     disableEditButtons();
+    disableRemoveButtons();
     showInputForm();
     listMyCards();
     validateInputForm();
@@ -187,6 +188,7 @@ searchModeButton.onclick = (e) => {
     e.preventDefault();
     resetForms();
     disableEditButtons();
+    disableRemoveButtons();
     showSearchForm();
     listMyCards();
 }
@@ -210,33 +212,3 @@ sortButton.onclick = (e) => {
     listMyCards();
     validateInputForm();
 }
-
-
-/*
-+load cardList from localstorage on page +
-+on load, list my cardList+
-+on load, clear the form+
-
-pull buttons from the document+
-
-+define the addCard function+
-
-+define the listMyCards function+
-
-+define form validation for card input+
-
-+define clear form button+
-
-
-make add items form
-define add items mode button
-
-make edit items form
-define edit items mode button
-
-make search form
-define search items mode button
-
-define remove items mode button
-make delete buttons enabled/disabled on click
-*/
