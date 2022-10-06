@@ -7,23 +7,8 @@ document.getElementById('body').onload = () =>{
     listMyCards();
     validateInputForm();
     showInputForm();
-    let deleteButtons = document.querySelectorAll('.removeButton')
-    deleteButtons.forEach((button) => {
-        button.disabled = true;
-        button.style.display = "none";
-    })
-    
-
-    let clearFormButtons = document.querySelectorAll('.clearFormButton')
-    clearFormButtons.forEach((button) => {
-        button.onclick = (e) => {
-            e.preventDefault();
-            resetForms();
-            listMyCards();
-            validateInputForm();
-            validateEditForm();
-        }
-    });
+    disableRemoveButtons();
+    empowerClearFormButtons();
     }
 
 const addCardButton = document.getElementById('addCardButton');
