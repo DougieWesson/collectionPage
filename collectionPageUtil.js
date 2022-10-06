@@ -322,3 +322,18 @@ const showSearchForm = () => {
     document.getElementById('editDiv').style.display = "none";
     document.getElementById('searchDiv').style.display = "block";
 }
+
+const populateEditForm = () => {
+    if(isCardNameEditUnique()) {
+        document.getElementById('errorText').innerHTML = "Card name not in use.";
+        document.getElementById('editCardButton').disabled = true;
+        return false
+    } else if (!isCardNameEditUnique()) {
+        let originalIndex = cardList.map(card => card.cardName).indexOf(document.forms["editForm"]["cardName"].value);
+        document.forms.editForm.cardTypeEdit.value = cardList[originalIndex][cardType];
+        document.forms.editForm.manaCostEdit.value = cardList[originalIndex][manaCost];
+        document.forms.editForm.cardValueEdit.value = cardList[originalIndex][cardValue];
+        // document.forms.editForm.cardPicEdit.value = cardList[originalIndex][cardPic];
+    }
+    validateEditForm();
+}
