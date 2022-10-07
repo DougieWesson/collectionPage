@@ -373,7 +373,7 @@ const populateEditForm = (cardIndex) => {
 }
 
 const formatManaCost = (rawManaCost) => {
-    let sortKey = "XWUBRG"
+    let sortKey = "xwubrg"
     let characters = rawManaCost.toLowerCase();
     let letters = characters.split("").filter(i => sortKey.includes(i) === true);
     let numbers = characters.split("").filter(i => sortKey.includes(i) === false);
